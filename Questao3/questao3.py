@@ -1,13 +1,25 @@
 from types import prepare_class
 import os
 
-variaves = []
-valores = []
+#variaves=[]
+#valores=[]
+"""
+Os Arrays variaves e valores estão preenchidos para ficar melhor de testar a base de inferencia dada
+
+Mas, caso queiram testar outra base, basta comentar eles dois e descomentar as duas variaveis acima desse comentário
+"""
+variaves = ['rendimento_alto','rendimento_medio','rendimento_baixo',
+            'conceda_emprestimo_sim', 'conceda_emprestimo_nao',
+            'e_bacharel_ou_superior_sim', 'e_bacharel_ou_superior_nao',
+            'tem_emprego_sim', 'tem_emprego_nao',
+            'continua_a_investigar_sim',
+            'referencias_sim', 'referencias_nao']
+valores = ['alto','medio','baixo','sim','nao','sim','nao','sim','nao','sim','sim','nao']
 se=[]
 entao=[]
 regras=[]
-baseFatos = ['a=s','b=n']
-objetivo = ['c=s']
+baseFatos = ['referencias_sim=sim','e_bacharel_ou_superior_nao=nao']
+objetivo = ['rendimento_alto=alto']
 
 def buscarObjetivo(lista):
   for i in lista:
@@ -70,7 +82,7 @@ def criarRegras():
       regra+=f' {variaves[indice]} = {valores[indice]} '
     else:
       print(f'Variavel não existe')
-    
+      criarRegras()    
     if regraEntao:
       operador = selecionarOperadores()
       se.append(regra)
